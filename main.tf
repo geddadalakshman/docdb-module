@@ -11,6 +11,12 @@ resource "aws_docdb_cluster" "main" {
   kms_key_id = data.aws_kms_key.kms_key.arn
 }
 
+resource "null_resource" "docdb_cluster" {
+  triggers = {
+    db_cluster = aws_docdb_cluster.main.cluster_identifier
+  }
+}
+
 resource "aws_docdb_cluster_instance" "cluster_instances" {
   count              = var.no_of_instances
   identifier         = "${var.env}-docdb-${count.index}"
