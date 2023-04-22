@@ -6,4 +6,6 @@ variable "skip_final_snapshot" {}
 variable "tags" {}
 variable "subnet_ids" {}
 variable "engine_version" {}
+variable "instance_class" {}
+variable "no_of_instances" {}
 

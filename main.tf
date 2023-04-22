@@ -7,6 +7,14 @@ resource "aws_docdb_cluster" "main" {
   backup_retention_period = var.backup_retention_period
   preferred_backup_window = var.preferred_backup_window
   skip_final_snapshot     = var.skip_final_snapshot
+  db_subnet_group_name = aws_docdb_subnet_group.main.name
+}
+
+resource "aws_docdb_cluster_instance" "cluster_instances" {
+  count              = var.no_of_instances
+  identifier         = "${var.env}-docdb-${count.index}"
+  cluster_identifier = aws_docdb_cluster.main.id
+  instance_class     = var.instance_class
 }
 
 resource "aws_docdb_subnet_group" "main" {
