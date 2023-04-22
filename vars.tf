@@ -8,6 +8,8 @@ variable "subnet_ids" {}
 variable "engine_version" {}
 variable "instance_class" {}
 variable "no_of_instances" {}
-variable "storage_encrypted" {}
+variable "storage_encrypted" {
+  default = true
+}
 
 
