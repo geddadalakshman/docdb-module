@@ -8,6 +8,7 @@ resource "aws_docdb_cluster" "main" {
   preferred_backup_window = var.preferred_backup_window
   skip_final_snapshot     = var.skip_final_snapshot
   db_subnet_group_name = aws_docdb_subnet_group.main.name
+  aws_kms_key = data.aws_kms_key.kms_key.arn
 }
 
 resource "aws_docdb_cluster_instance" "cluster_instances" {
