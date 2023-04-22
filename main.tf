@@ -20,3 +20,4 @@ resource "aws_docdb_subnet_group" "main" {
     },
   )
 }
+
